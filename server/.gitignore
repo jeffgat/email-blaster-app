@@ -1,6 +1,6 @@
 .vscode/
-node_modules/
+node_modules
 build
 .DS_Store
 .env
-keys.js
+dev.js
