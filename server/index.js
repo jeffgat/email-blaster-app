@@ -5,9 +5,11 @@ const cookieSession = require('cookie-session');
 
 const authRoutes = require('./routes/authRoutes');
 const billingRoutes = require('./routes/billingRoutes');
+const surveyRoutes = require('./routes/surveyRoutes');
 const keys = require('./config/keys');
 
 require('./models/User');
+require('./models/Survey');
 require('./services/passport');
 
 mongoose.connect(keys.mongoURI, {
@@ -28,6 +30,7 @@ app.use(passport.session());
 // require('/routes/authRoutes')(app); // because authRoutes returns a function that takes in 'app', we don't need to assign it to a variable and can pass it in like this.
 authRoutes(app); // though i prefer this tbh
 billingRoutes(app);
+surveyRoutes(app);
 
 if (process.env.NODE_ENV === 'production') {
   // Express wil serve up production assets
